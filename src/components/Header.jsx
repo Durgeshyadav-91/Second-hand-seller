@@ -16,6 +16,7 @@ const Header = () => {
             <li>Preowned</li>
 
         </ul>
+        <div>
         {
           isSignedIn ?
           <div>
@@ -25,6 +26,7 @@ const Header = () => {
           :
           <Button>Submit Listing</Button>
         }
+        </div>
     </div>
   )
 }

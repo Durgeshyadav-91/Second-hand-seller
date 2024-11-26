@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './home'
+import Home from './app'
 import Contact from './contact'
 import { ClerkProvider } from '@clerk/clerk-react'
 
@@ -16,7 +16,6 @@ const router = createBrowserRouter([
     element: <Contact/>
   }
 ])
-
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
