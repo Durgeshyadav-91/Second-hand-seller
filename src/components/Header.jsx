@@ -9,17 +9,17 @@ const Header = () => {
     <div className='flex justify-between items-center'>
         <img src='/images/logo.webp' width={80} height={50} alt='Logo' />
 
-        <ul className='flex gap-4 text-emerald-400'>
-            <li>Home</li>
-            <li>Serch</li>
-            <li>New</li>
-            <li>Preowned</li>
+        <ul className='hidden md:flex gap-16 text-gray-700'>
+            <li className='font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary'>Home</li>
+            <li className='font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary'>Serch</li>
+            <li className='font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary'>New</li>
+            <li className='font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary'>Preowned</li>
 
         </ul>
         <div>
         {
           isSignedIn ?
-          <div>
+          <div className='flex items-center gap-4'>
             <UserButton/>
             <Button>Submit Listing</Button>
           </div>
