@@ -121,37 +121,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="text-center sm:text-left">
-          <p className="text-lg font-medium text-gray-900">Helpful Links</p>
-
-          <ul className="mt-8 space-y-4 text-sm">
-            <li>
-              <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> FAQs </a>
-            </li>
-
-            <li>
-              <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Support </a>
-            </li>
-
-            <li>
-              <a
-                className="group flex justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-                href="#"
-              >
-                <span className="text-gray-700 transition group-hover:text-gray-700/75">
-                  Live Chat
-                </span>
-
-                <span className="relative flex size-2">
-                  <span
-                    className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"
-                  ></span>
-                  <span className="relative inline-flex size-2 rounded-full bg-teal-500"></span>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
 
         <div className="text-center sm:text-left">
           <p className="text-lg font-medium text-gray-900">Contact Us</p>
