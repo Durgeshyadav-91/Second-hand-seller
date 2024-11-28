@@ -6,7 +6,7 @@ import { Button } from './ui/button'
 const Header = () => {
   const {user, isSignedIn} = useUser()
   return (
-    <div className='flex justify-between items-center'>
+    <div className='flex justify-between items-center px-4 md:px-12'>
         <img src='/images/logo.webp' width={80} height={50} alt='Logo' />
 
         <ul className='hidden md:flex gap-16 text-gray-700'>
@@ -21,10 +21,10 @@ const Header = () => {
           isSignedIn ?
           <div className='flex items-center gap-4'>
             <UserButton/>
-            <Button>Submit Listing</Button>
+            <Button className="text-white">Submit Listing</Button>
           </div>
           :
-          <Button>Submit Listing</Button>
+          <Button className="text-white">Submit Listing</Button>
         }
         </div>
     </div>
