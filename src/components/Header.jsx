@@ -6,8 +6,8 @@ import { Button } from './ui/button'
 const Header = () => {
   const {user, isSignedIn} = useUser()
   return (
-    <div className='flex justify-between items-center px-4 md:px-12'>
-        <img src='/images/logo.webp' width={80} height={50} alt='Logo' />
+    <div className='flex justify-between items-center px-4 md:px-12 py-2'>
+        <img src='/images/logo-black.png' width={100} height={90} alt='Logo' />
 
         <ul className='hidden md:flex gap-16 text-gray-700'>
             <li className='font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary'>Home</li>
