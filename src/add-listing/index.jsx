@@ -15,6 +15,8 @@ import UploadImages from "./components/UploadImages";
 import { BiLoaderAlt } from "react-icons/bi";
 import { Toaster } from './../components/ui/sonner'
 import { useNavigate } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
+import moment from 'moments'
 
 const AddListing = () => {
   const [formData, setFormData] = useState([]);
@@ -22,6 +24,7 @@ const AddListing = () => {
   const [triggerUploadImages, setTriggerUploadImages] = useState();
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
+  const {user} = useUser();
 
   const handleInputChange = (name, value) => {
     setFormData((preData) => ({
@@ -45,8 +48,11 @@ const AddListing = () => {
     try {
       const result = await db.insert(allListing).values({
         ...formData,
-        features:featuresData
-      }).returning({id:allListing.id})
+        features:featuresData,
+        createdBy:user?.primaryEmailAddress?.emailAddress,
+        postedOn:moment().format('DD/MMM/yyyy')
+      }
+    ).returning({id:allListing.id})
       if (result) {
         console.log("Data Saved");
         setTriggerUploadImages(result[0]?.id);

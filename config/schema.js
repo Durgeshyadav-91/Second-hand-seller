@@ -22,7 +22,9 @@ export const allListing = pgTable('allListingDetails',{
     vin: varchar('vin'),
     offerType: varchar('offerType'),
     listingDescription: varchar('listingDescription').notNull(),
-    features: json("features")
+    features: json("features"),
+    createdBy:varchar('createdBy').notNull().default('gameplayer3434@gmail.com'),
+    postedOn:varchar('postedOn').notNull()
 })
 
 
@@ -31,3 +33,4 @@ export const AllListingImages = pgTable('allListingImages',{
     imageUrl:varchar('imageUrl').notNull(),
     imageListingId:integer('imageListingId').notNull().references(()=>allListing.id)
 })
+
