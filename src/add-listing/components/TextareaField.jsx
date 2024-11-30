@@ -2,10 +2,10 @@ import React from 'react'
 import { Textarea } from "@/components/ui/textarea"
 
 
-const TextareaField = ({item}) => {
+const TextareaField = ({item, handleInputChange}) => {
   return (
-    <div>
-        <Textarea name={item?.name} />
+    <div className='pb-10'>
+        <Textarea onChange={(e)=>handleInputChange(item.name, e.target.value)} name={item?.name} required={item?.required}/>
     </div>
   )
 }
