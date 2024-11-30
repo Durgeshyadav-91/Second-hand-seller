@@ -4,7 +4,7 @@ import React from 'react'
 const InputField = ({item}) => {
   return (
     <div>
-        <Input name={item.name}/>
+        <Input className='border rounded-md' type={item?.fieldType} name={item?.name} required={item?.required} />
     </div>
   )
 }
