@@ -11,10 +11,18 @@ import { Button } from "@/components/ui/button";
 import { db } from "./../../config";
 import { allListing } from "./../../config/schema";
 import IconField from "./components/IconField";
+import UploadImages from "./components/UploadImages";
+import { BiLoaderAlt } from "react-icons/bi";
+import { Toaster } from './../components/ui/sonner'
+import { useNavigate } from "react-router-dom";
 
 const AddListing = () => {
   const [formData, setFormData] = useState([]);
   const [featuresData, setFeaturesData] = useState([]);
+  const [triggerUploadImages, setTriggerUploadImages] = useState();
+  const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
+
   const handleInputChange = (name, value) => {
     setFormData((preData) => ({
       ...preData,
@@ -31,14 +39,18 @@ const AddListing = () => {
   }
 
   const onSubmit = async (e) => {
+    setLoader(true);
     e.preventDefault();
+    Toaster("Please Wait...")
     try {
       const result = await db.insert(allListing).values({
         ...formData,
         features:featuresData
-      });
+      }).returning({id:allListing.id})
       if (result) {
         console.log("Data Saved");
+        setTriggerUploadImages(result[0]?.id);
+        setLoader(false);
       }
     } catch (error) {
       console.log("Error", error);
@@ -82,8 +94,9 @@ const AddListing = () => {
             </div>
           </div>
 
+          <Separator className="my-6" />
           {/* features List */}
-          <div className="border-t-2">
+          <div className="">
             <h2 className="font-medium text-xl my-6">Features</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
               {features.features.map((item, idx) => (
@@ -100,11 +113,16 @@ const AddListing = () => {
             </div>
           </div>
 
+          <Separator className="my-6" />
           {/* Car Images */}
 
+          <UploadImages triggerUploadImages={triggerUploadImages} setLoader={(v)=>{setLoader(v); navigate('/profile')}}/>
           <div className="mt-10 flex justify-end">
-            <Button type="submit" onClick={(e) => onSubmit(e)}>
-              Submit
+            <Button type="submit" 
+            disabled={loader}
+            onClick={(e) => onSubmit(e)}>
+              {!loader? "Submit" : <BiLoaderAlt className="animate-spin text-lg"/>}
+              
             </Button>
           </div>
         </form>

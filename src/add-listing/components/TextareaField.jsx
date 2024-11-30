@@ -4,7 +4,7 @@ import { Textarea } from "@/components/ui/textarea"
 
 const TextareaField = ({item, handleInputChange}) => {
   return (
-    <div className='pb-10'>
+    <div className='pb-2'>
         <Textarea onChange={(e)=>handleInputChange(item.name, e.target.value)} name={item?.name} required={item?.required}/>
     </div>
   )

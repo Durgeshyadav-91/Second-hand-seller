@@ -1,6 +1,6 @@
-import { json, pgTable, serial, varchar } from "drizzle-orm/pg-core";
+import { integer, json, pgTable, serial, varchar } from "drizzle-orm/pg-core";
 
-export const allListing = pgTable('listing',{
+export const allListing = pgTable('allListingDetails',{
     id: serial('id').primaryKey(),
     listingTitle: varchar('listingTitle').notNull(),
     tagline: varchar('tagline'),
@@ -23,4 +23,11 @@ export const allListing = pgTable('listing',{
     offerType: varchar('offerType'),
     listingDescription: varchar('listingDescription').notNull(),
     features: json("features")
+})
+
+
+export const AllListingImages = pgTable('allListingImages',{
+    id:serial('id').primaryKey(),
+    imageUrl:varchar('imageUrl').notNull(),
+    imageListingId:integer('imageListingId').notNull().references(()=>allListing.id)
 })
