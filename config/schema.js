@@ -24,7 +24,7 @@ export const allListing = pgTable('allListingDetails',{
     listingDescription: varchar('listingDescription').notNull(),
     features: json("features"),
     createdBy:varchar('createdBy').notNull().default('gameplayer3434@gmail.com'),
-    postedOn:varchar('postedOn').notNull()
+    // postedOn:varchar('postedOn').notNull('23 jan')
 })
 
 

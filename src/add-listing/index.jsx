@@ -13,10 +13,10 @@ import { allListing } from "./../../config/schema";
 import IconField from "./components/IconField";
 import UploadImages from "./components/UploadImages";
 import { BiLoaderAlt } from "react-icons/bi";
-import { Toaster } from './../components/ui/sonner'
+// import { Toast } from './../components/ui/sonner'
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
-import moment from 'moments'
+// import moment from 'moment';
 
 const AddListing = () => {
   const [formData, setFormData] = useState([]);
@@ -42,15 +42,16 @@ const AddListing = () => {
   }
 
   const onSubmit = async (e) => {
-    setLoader(true);
+    // setLoader(true);
     e.preventDefault();
-    Toaster("Please Wait...")
+    // Toast("Please Wait...")
     try {
       const result = await db.insert(allListing).values({
         ...formData,
         features:featuresData,
-        createdBy:user?.primaryEmailAddress?.emailAddress,
-        postedOn:moment().format('DD/MMM/yyyy')
+        // createdBy:user?.primaryEmailAddress?.emailAddress,
+        // postedOn:moment().format('DD/MMM/yyyy')
+        // postedOn:moment().format('DD/MMM/yyyy')
       }
     ).returning({id:allListing.id})
       if (result) {
